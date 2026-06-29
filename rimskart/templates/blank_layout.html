@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>://rimskart.com</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        {% include 'header.html' %}
+
+    </header>
+
+
+    
+    <main>
+        {% block banner %}
+        {% include 'banner_layout.html' %}
+        {% endblock banner %}
+
+        {% block content %}
+        {% include 'home_layout.html' %}
+        {% endblock content %}
+
+
+    </main>
+
+
+    <footer class="site-footer">
+        <!-- Top Part: Columns -->
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h3>ABOUT</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Rimskart Stories</a>
+                <a href="#">Press</a>
+                <a href="#">Corporate Information</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>GROUP COMPANIES</h3>
+                <a href="#">Myntra</a>
+                <a href="#">Cleartrip</a>
+                <a href="#">Shopsy</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>HELP</h3>
+                <a href="#">Payments</a>
+                <a href="#">Shipping</a>
+                <a href="#">Cancellation & Returns</a>
+                <a href="#">FAQ</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>CONSUMER POLICY</h3>
+                <a href="#">Cancellation & Returns</a>
+                <a href="#">Terms Of Use</a>
+                <a href="#">Security</a>
+                <a href="#">Privacy</a>
+                <a href="#">Sitemap</a>
+                <a href="#">Grievance Redressal</a>
+                <a href="#">EPR Compliance</a>
+            </div>
+
+            <!-- Mail Us Address -->
+            <div class="footer-col address-col">
+                <h3>Mail Us:</h3>
+                <p>Rimskart Internet Private Limited,</p>
+                <p>Buildings mountain, Tirur &</p>
+                <p>Rimsrock Tech,</p>
+                <p>NH 66, Kalpakanchary Village,</p>
+                <p>Athirumada,Pin:676551</p>
+                <p>Keral, India</p>
+                
+                <div class="social-box">
+                    <span>Social:</span>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registered Address -->
+            <div class="footer-col address-col border-left">
+                <h3>Registered Office Address:</h3>
+                <p>Rimskart Internet Private Limited,</p>
+                <p>Buildings mountain, Tirur &</p>
+                <p>Rimsrock Tech,</p>
+                <p>NH 66, Kalpakanchary Village,</p>
+                <p>Athirumada,Pin:676551</p>
+                <p>Keral, India</p>
+                <p>Telephone: <span class="phone-link">0000000000</span> / <span class="phone-link">000000000000</span></p>
+            </div>
+        </div>
+
+        <!-- Bottom Part: Features & Copyright -->
+        <div class="footer-bottom">
+            <div class="bottom-links">
+                <a href="#"><i class="fa-solid fa-store text-yellow"></i> Become a Seller</a>
+                <a href="#"><i class="fa-solid fa-star text-yellow"></i> Advertise</a>
+                <a href="#"><i class="fa-solid fa-gift text-yellow"></i> Gift Cards</a>
+                <a href="#"><i class="fa-solid fa-circle-question text-yellow"></i> Help Center</a>
+            </div>
+            
+            <div class="copyright">
+                © 2007-2026 Rimskart.com
+            </div>
+
+            <!-- Placeholder for Payment Logos -->
+            <div class="payment-methods">
+                <span class="card-mock">VISA</span>
+                <span class="card-mock">MC</span>
+                <span class="card-mock">Rupay</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

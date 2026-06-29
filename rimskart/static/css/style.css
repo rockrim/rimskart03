@@ -169,3 +169,301 @@ body {
 .active-category .category-icon-wrapper {
     color: #2874f0;
 }
+
+
+/*------------------------------------------------------------------*/
+/* Main Footer Structure */
+.site-footer {
+    background-color: #212121;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 40px 20px 20px 20px;
+}
+
+/* Flexbox Grid layout to create the 6 side-by-side columns */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    width: 14%;
+}
+
+/* Headings Styling */
+.footer-col h3 {
+    color: #878787;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+/* Inside Links Layout */
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 7px;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+/* Extra styling configurations for the address blocks */
+.address-col {
+    width: 20%;
+}
+
+.address-col p {
+    margin: 0 0 4px 0;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.border-left {
+    border-left: 1px solid #444;
+    padding-left: 25px;
+}
+
+.phone-link {
+    color: #2874f0;
+}
+
+/* Social Icon Blocks */
+.social-box {
+    margin-top: 15px;
+}
+
+.social-box span {
+    color: #878787;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+/* Bottom Bar Formatting Layout */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+    padding-top: 10px;
+}
+
+.bottom-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 25px;
+}
+
+.text-yellow {
+    color: #ffc107;
+    margin-right: 5px;
+}
+
+.copyright {
+    color: #fff;
+}
+
+/* Basic Visual Placement Boxes for Payment Badges */
+.payment-methods .card-mock {
+    background-color: #333;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 10px;
+    border: 1px solid #555;
+}
+
+/*-----------------------------------------------------------------------*/
+/* Container framework that crops overflow and enables horizontal scrolling */
+.banner-slider-container {
+    width: 100%;
+    padding: 20px 10%;
+    overflow-x: auto;            /* 🌟 Enables horizontal scrolling */
+    scroll-behavior: smooth;     /* 🌟 Smooth movement when clicking or sliding */
+    
+    /* 🌟 SCROLL SNAP CODES: Enables magnet-like snapping behaviors */
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; /* Extra smooth swiping on mobile devices */
+    
+    scrollbar-width: none;       /* Hides default scrollbars on Firefox */
+}
+
+/* Hides scrollbars on Chrome, Safari, and Opera web browsers */
+.banner-slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* The horizontal track holding all the cards in a single row line */
+.banner-slider-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;          /* Forces track to stay wide instead of squishing */
+}
+
+/* Individual slide card styling elements */
+.banner-card {
+    display: flex;
+    justify-content: space-between;
+    width: 420px;
+    height: 180px;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    
+    /* 🌟 CRITICAL FIX CODES: Keeps full card width and locks them to screen borders */
+    flex-shrink: 0;              /* Prevents cards from squishing together */
+    scroll-snap-align: start;    /* Tells the magnet system where to snap */
+}
+
+/* Text area alignments */
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 60%;
+}
+
+.brand-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.banner-text h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.banner-text h1 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.banner-text p {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Visual graphics layout section */
+.banner-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    position: relative;
+}
+
+.mock-product {
+    font-size: 60px; /* Big placeholder emojis until you link your images */
+}
+
+.ad-tag {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    color: #fff;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Color palettes matching your image reference */
+.banner-blue {
+    background: linear-gradient(135deg, #b9d4ec, #9bbcd8);
+    color: #1e3545;
+}
+
+.banner-cream {
+    background: linear-gradient(135deg, #fffdec, #f3edd3);
+    color: #2b291d;
+}
+
+.banner-black {
+    background: #0f1115;
+    color: #ffffff;
+}
+.banner-black .brand-name {
+    color: #ffc107; /* Gives Flipkart brand colors a slight highlight pop */
+}
+
+/* dropdown meanu ------------------------------------------------------*/
+/* Ensure the parent item acts as an anchor point for the absolute list */
+.nav-item.dropdown {
+    position: relative;
+    padding: 10px 0; /* Creates an invisible bridge so the menu doesn't close when moving the cursor down */
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* The actual list box: hidden by default */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Places it perfectly beneath the navbar text */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the box nicely */
+    background-color: #ffffff;
+    min-width: 180px;
+    list-style: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    margin-top: 5px;
+    
+    display: none; /* 🌟 Hides the list initially */
+    z-index: 1000; /* Ensures it floats above banners or sliders */
+}
+
+/* Individual list rows */
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: background 0.2s ease;
+}
+
+/* Icons inside the selection list */
+.dropdown-menu li a i {
+    color: #2874f0; /* Matches your Rimskart blue theme color */
+    font-size: 14px;
+}
+
+/* Hover highlights */
+.dropdown-menu li a:hover {
+    background-color: #f0f5ff;
+    color: #2874f0;
+}
+
+/* 🌟 MAGIC TRICK: Shows the list box immediately when the mouse hovers over it */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}

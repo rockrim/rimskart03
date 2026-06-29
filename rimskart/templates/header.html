@@ -1,0 +1,96 @@
+
+{% load static %}
+<div class="top-bar">
+    <div class="top-bar-left">
+        <a href="#" class="tab active-tab"><img src="{% static 'images/rimskart.png' %}" alt="Logo" class="tab-icon"></a>
+        <a href="#" class="tab"><i class="fa-solid fa-plane"></i> Travel</a>
+    </div>
+    <div class="top-bar-right">
+        <span class="location"><i class="fa-solid fa-location-dot"></i> Location not set <a href="#">Select delivery location &gt;</a></span>
+    </div>
+</div>
+
+<!-- Main Navigation Bar -->
+<nav class="main-nav">
+    <div class="nav-container">
+        <!-- Search Bar -->
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" placeholder="Search for Products, Brands and More">
+        </div>
+
+        <!-- Nav Actions -->
+        <div class="nav-actions">
+            
+            <!-- 🌟 DROPDOWN 1: LOGIN -->
+            <div class="nav-item dropdown">
+                <div class="dropdown-trigger">
+                    <i class="fa-regular fa-user"></i> Login <i class="fa-solid fa-chevron-down arrow"></i>
+                </div>
+                <!-- Selection List -->
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa-solid fa-circle-user"></i> My Profile</a></li>
+                    <li><a href="#"><i class="fa-solid fa-box"></i> Orders</a></li>
+                    <li><a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gift"></i> Rewards</a></li>
+                </ul>
+            </div>
+
+            <!-- 🌟 DROPDOWN 2: MORE -->
+            <div class="nav-item dropdown">
+                <div class="dropdown-trigger">
+                    More <i class="fa-solid fa-bars"></i>
+                </div>
+                <!-- Selection List -->
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'index' %}"><i class="fa-solid fa-home"></i> menu</a></li>
+                    <li><a href="{% url 'products_list' %}"><i class="fa-solid fa-bag-shopping"></i> product</a></li>
+                    <li><a href="#"><i class="fa-solid fa-headset"></i> 24x7 Customer Care</a></li>
+                    <li><a href="#"><i class="fa-solid fa-arrow-trend-up"></i> Advertise</a></li>
+                    <li><a href="#"><i class="fa-solid fa-download"></i> Download App</a></li>
+                </ul>
+            </div>
+
+            <a href="#" class="nav-item cart-link">
+                <i class="fa-solid fa-cart-shopping"></i> Cart
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Categories Sub-Navigation -->
+<div class="categories-bar">
+    <div class="category-item active-category">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-bag-shopping"></i></div>
+        <span>For You</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-shirt"></i></div>
+        <span>Fashion</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <span>Mobiles</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper   "><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <span>Beauty</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-laptop"></i></div>
+        <span>Electronics</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-couch"></i></div>
+        <span>Home</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-tv"></i></div>
+        <span>Appliances</span>
+    </div>
+    <div class="category-item">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-car"></i></div>
+        <span>Auto</span>
+    </div>
+</div>
