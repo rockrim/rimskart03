@@ -7,6 +7,6 @@ def index(request):
 def products_list(request):
     return render(request,'products.html')
 
-def porducts_detail(request):
+def products_detail(request):
     return render(request,'products_detail.html')
 

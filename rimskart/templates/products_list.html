@@ -1,0 +1,64 @@
+
+{% load static %}
+<div class="header-container">
+        <h1>All Products</h1>
+        <select class="sort-select">
+            <option>Default Sorting</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+        </select>
+    </div>
+
+    <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="image-wrapper">
+                <!-- Ensure you name your file red-tshirt.jpg inside static/images -->
+                <a href="{% url 'products_detail'%}  "><img src="static/images/red-tshirt.jpg" alt="Men's Red Printed T-Shirt"></a>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Men's Red Printed T-Shirt</div>
+                <div class="rating">★★★★<span class="empty-star">★</span></div>
+                <div class="price">$50.00</div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="image-wrapper">
+                <!-- Ensure you name your file black-sneakers.jpg inside static/images -->
+                <img src="static/images/black-sneakers.jpg" alt="Men's Performance Sneakers">
+            </div>
+            <div class="product-info">
+                <div class="product-title">Men's Performance Sneakers</div>
+                <div class="rating">★★★★<span class="empty-star">★</span></div>
+                <div class="price">$50.00</div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="image-wrapper">
+                <!-- Ensure you name your file track-pants.jpg inside static/images -->
+                <img src="static/images/track-pants.jpg" alt="Men's Slim-Fit Track Pants">
+            </div>
+            <div class="product-info">
+                <div class="product-title">Men's Slim-Fit Track Pants</div>
+                <div class="rating">★★★★<span class="empty-star">★</span></div>
+                <div class="price">$50.00</div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <div class="image-wrapper">
+                <!-- Ensure you name your file polo-tshirt.jpg inside static/images -->
+                <img src="static/images/polo-tshirt.jpg" alt="Men's Navy Polo T-Shirt">
+            </div>
+            <div class="product-info">
+                <div class="product-title">Men's Navy Polo T-Shirt</div>
+                <div class="rating">★★★★<span class="empty-star">★</span></div>
+                <div class="price">$50.00</div>
+            </div>
+        </div>
+    </div>

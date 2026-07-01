@@ -29,10 +29,12 @@
                 </div>
                 <!-- Selection List -->
                 <ul class="dropdown-menu">
-                    <li><a href="#"><i class="fa-solid fa-circle-user"></i> My Profile</a></li>
+                    <li><a href="#"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+                    <li><a href="{% url 'account' %}"><i class="fa-solid fa-circle-user"></i> Account</a></li>
                     <li><a href="#"><i class="fa-solid fa-box"></i> Orders</a></li>
                     <li><a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a></li>
                     <li><a href="#"><i class="fa-solid fa-gift"></i> Rewards</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                 </ul>
             </div>
 
@@ -50,10 +52,11 @@
                     <li><a href="#"><i class="fa-solid fa-download"></i> Download App</a></li>
                 </ul>
             </div>
+            <div > 
+                <a href="{% url 'show_cart' %}" class="nav-item cart-link" ><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+            </div>
 
-            <a href="#" class="nav-item cart-link">
-                <i class="fa-solid fa-cart-shopping"></i> Cart
-            </a>
+              
         </div>
     </div>
 </nav>

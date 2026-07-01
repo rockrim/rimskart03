@@ -1,0 +1,119 @@
+{% extends 'blank_layout.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block banner %}
+<!-- Empties the home banner -->
+{% endblock banner %}
+    
+{% block content %}
+<!-- Empties the home product list grid -->
+{% endblock content %}
+
+{% block detail %}
+<!-- Empties out the product description content -->
+{% endblock detail %}
+
+{% block account %}
+<!-- Empties out the account login layout -->
+{% endblock account %}
+
+{% block cart %}
+<div class="cart-page-container">
+    
+    <!-- Main Items Grid Table -->
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th width="65%">Product</th>
+                <th width="15%" class="text-center">Quantity</th>
+                <th width="20%" class="text-right">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <!-- Item Row 1: Red T-Shirt -->
+            <tr>
+                <td>
+                    <div class="cart-product-info">
+                        <img src="{% static 'images/red-tshirt.jpg' %}" alt="Red Printed T-Shirt">
+                        <div class="product-details-box">
+                            <h3>Red Printed T-Shirt</h3>
+                            <span class="item-price">Price: $50.00</span>
+                            <a class="remove-btn">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td class="quantity-cell">
+                    <input type="number" value="1" min="1" class="cart-qty-input">
+                </td>
+                <td class="subtotal-cell">$50.00</td>
+            </tr>
+
+            <!-- Item Row 2: Performance Sneakers -->
+            <tr>
+                <td>
+                    <div class="cart-product-info">
+                        <img src="{% static 'images/black-sneakers.jpg' %}" alt="Men's Performance Sneakers">
+                        <div class="product-details-box">
+                            <h3>Men's Performance Sneakers</h3>
+                            <span class="item-price">Price: $50.00</span>
+                            <a class="remove-btn">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td class="quantity-cell">
+                    <input type="number" value="1" min="1" class="cart-qty-input">
+                </td>
+                <td class="subtotal-cell">$50.00</td>
+            </tr>
+
+            <!-- Item Row 3: Track Pants -->
+            <tr>
+                <td>
+                    <div class="cart-product-info">
+                        <img src="{% static 'images/track-pants.jpg' %}" alt="Men's Slim-Fit Track Pants">
+                        <div class="product-details-box">
+                            <h3>Men's Slim-Fit Track Pants</h3>
+                            <span class="item-price">Price: $50.00</span>
+                            <a class="remove-btn">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td class="quantity-cell">
+                    <input type="number" value="1" min="1" class="cart-qty-input">
+                </td>
+                <td class="subtotal-cell">$50.00</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!-- Checkout Pricing Breakdown Box Section -->
+    <div class="cart-summary-wrapper">
+        <table class="summary-table">
+            <tr>
+                <td>Subtotal</td>
+                <td class="text-right-align">$200.00</td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td class="text-right-align">$35.00</td>
+            </tr>
+            <tr class="total-row">
+                <td>Total</td>
+                <td class="text-right-align">$230.00</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" class="checkout-submit-btn">Proceed To Checkout</button></td>
+            </tr>
+        </table>
+    </div>  
+</div>
+{% endblock cart %}
+
+

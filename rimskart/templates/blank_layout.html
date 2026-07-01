@@ -11,7 +11,10 @@
 <body>
 
     <header>
+        {% block header %}
         {% include 'header.html' %}
+        {% endblock header %}
+     
 
     </header>
 
@@ -23,9 +26,18 @@
         {% endblock banner %}
 
         {% block content %}
-        {% include 'home_layout.html' %}
+        {% include 'products_list.html' %}
         {% endblock content %}
 
+        {% block detail %}
+        {% include 'products_description.html' %}
+        {% endblock detail %}
+
+        {% block account %}
+        {% endblock account %}
+
+        {% block cart %}
+        {% endblock cart %}
 
     </main>
 
