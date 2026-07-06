@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* main header structure--------------------------------------------------*/
 * {
     margin: 0;
     padding: 0;
@@ -170,127 +170,68 @@ body {
     color: #2874f0;
 }
 
-
-/*------------------------------------------------------------------*/
-/* Main Footer Structure */
-.site-footer {
-    background-color: #212121;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    padding: 40px 20px 20px 20px;
+/* dropdown meanu ------------------------------------------------------*/
+.nav-item.dropdown {
+    position: relative;
+    padding: 10px 0; /* Creates an invisible bridge so the menu doesn't close when moving the cursor down */
 }
 
-/* Flexbox Grid layout to create the 6 side-by-side columns */
-.footer-columns {
+.dropdown-trigger {
     display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-    border-bottom: 1px solid #444;
+    align-items: center;
+    gap: 8px;
 }
 
-.footer-col {
+/* The actual list box: hidden by default */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Places it perfectly beneath the navbar text */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the box nicely */
+    background-color: #ffffff;
+    min-width: 180px;
+    list-style: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    margin-top: 5px;
+    
+    display: none; /* 🌟 Hides the list initially */
+    z-index: 1000; /* Ensures it floats above banners or sliders */
+}
+
+/* Individual list rows */
+.dropdown-menu li a {
     display: flex;
-    flex-direction: column;
-    width: 14%;
-}
-
-/* Headings Styling */
-.footer-col h3 {
-    color: #878787;
-    font-size: 12px;
-    font-weight: normal;
-    margin-bottom: 15px;
-}
-
-/* Inside Links Layout */
-.footer-col a {
-    color: #fff;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: #333;
     text-decoration: none;
-    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: background 0.2s ease;
 }
 
-.footer-col a:hover {
-    text-decoration: underline;
+/* Icons inside the selection list */
+.dropdown-menu li a i {
+    color: #2874f0; /* Matches your Rimskart blue theme color */
+    font-size: 14px;
 }
 
-/* Extra styling configurations for the address blocks */
-.address-col {
-    width: 20%;
-}
-
-.address-col p {
-    margin: 0 0 4px 0;
-    color: #fff;
-    line-height: 1.4;
-}
-
-.border-left {
-    border-left: 1px solid #444;
-    padding-left: 25px;
-}
-
-.phone-link {
+/* Hover highlights */
+.dropdown-menu li a:hover {
+    background-color: #f0f5ff;
     color: #2874f0;
 }
 
-/* Social Icon Blocks */
-.social-box {
-    margin-top: 15px;
-}
-
-.social-box span {
-    color: #878787;
+/* 🌟 MAGIC TRICK: Shows the list box immediately when the mouse hovers over it */
+.nav-item.dropdown:hover .dropdown-menu {
     display: block;
-    margin-bottom: 8px;
 }
 
-.social-icons a {
-    display: inline-block;
-    margin-right: 12px;
-    font-size: 16px;
-}
+/* banner -----------------------------------------------------------------------*/
 
-/* Bottom Bar Formatting Layout */
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 20px auto 0 auto;
-    padding-top: 10px;
-}
-
-.bottom-links a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 25px;
-}
-
-.text-yellow {
-    color: #ffc107;
-    margin-right: 5px;
-}
-
-.copyright {
-    color: #fff;
-}
-
-/* Basic Visual Placement Boxes for Payment Badges */
-.payment-methods .card-mock {
-    background-color: #333;
-    padding: 3px 8px;
-    border-radius: 2px;
-    margin-left: 5px;
-    font-weight: bold;
-    font-size: 10px;
-    border: 1px solid #555;
-}
-
-/*-----------------------------------------------------------------------*/
-/* Container framework that crops overflow and enables horizontal scrolling */
 .banner-slider-container {
     width: 100%;
     padding: 20px 10%;
@@ -407,81 +348,10 @@ body {
     color: #ffc107; /* Gives Flipkart brand colors a slight highlight pop */
 }
 
-/* dropdown meanu ------------------------------------------------------*/
-/* Ensure the parent item acts as an anchor point for the absolute list */
-.nav-item.dropdown {
-    position: relative;
-    padding: 10px 0; /* Creates an invisible bridge so the menu doesn't close when moving the cursor down */
-}
-
-.dropdown-trigger {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* The actual list box: hidden by default */
-.dropdown-menu {
-    position: absolute;
-    top: 100%; /* Places it perfectly beneath the navbar text */
-    left: 50%;
-    transform: translateX(-50%); /* Centers the box nicely */
-    background-color: #ffffff;
-    min-width: 180px;
-    list-style: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 8px 0;
-    margin-top: 5px;
-    
-    display: none; /* 🌟 Hides the list initially */
-    z-index: 1000; /* Ensures it floats above banners or sliders */
-}
-
-/* Individual list rows */
-.dropdown-menu li a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 16px;
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    transition: background 0.2s ease;
-}
-
-/* Icons inside the selection list */
-.dropdown-menu li a i {
-    color: #2874f0; /* Matches your Rimskart blue theme color */
-    font-size: 14px;
-}
-
-/* Hover highlights */
-.dropdown-menu li a:hover {
-    background-color: #f0f5ff;
-    color: #2874f0;
-}
-
-/* 🌟 MAGIC TRICK: Shows the list box immediately when the mouse hovers over it */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-}
 
 /* product list page ------------------------------------------------------*/
 
- * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #ffffff;
-            padding: 40px;
-        }
-
+        /* 2. Top Header Container Layout */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -502,51 +372,88 @@ body {
             border-radius: 4px;
             background-color: #fff;
             cursor: pointer;
+            font-size: 14px;
         }
 
+        /* 3. True CSS Grid Container */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr); /* Automatically forms 4 equal columns */
+            gap: 20px;                             /* Equal spacing between rows and columns */
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        /* 4. Product Card Container Styling */
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;                        /* Inner padding keeps everything breathing */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Subtle shadow effect when hovering over a card */
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 5. Fixed-Height Image Controller */
+        .product-image {
+            width: 100%;
+            height: 220px;         /* Locks all image heights to the exact same dimension */
+            object-fit: contain;   /* Safely shrinks down giant images without distortion */
+            margin-bottom: 15px;   /* Spacing between image and text */
+        }
+
+        /* 6. Product Text Elements Typography */
+        .product-card h3 {
+            font-size: 15px;
+            color: #444;
+            font-weight: normal;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            
+            /* Soft limit: cuts off text with '...' if product name is way too long */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-card p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #111;
+            margin-top: auto;      /* Automatically pushes price down to the bottom of the card */
+        }
+
+        /* 7. Responsive Breakpoints for Screen Sizes */
         @media (max-width: 1024px) {
             .products-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Drops to 2 cards per row on tablets */
             }
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr;            /* 1 full-width card per row on small phones */
             }
         }
 
-        .product-card {
-            background: #fff;
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .image-wrapper {
-            background-color: #f7f7f7;
-            width: 100%;
-            height: 320px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .image-wrapper img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-        }
 
         .product-info {
             padding: 15px 0;
@@ -574,22 +481,60 @@ body {
         .price {
             font-size: 16px;
             font-weight: bold;
-            color: #333;
+            color: #333;    
         }
+        /* page buttion */
+        /* Container layout */
+        .pagebutton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;              /* Equal spacing between buttons */
+            margin: 40px 0;        /* Space above and below the entire row */
+        }
+
+        /* Base button styling */
+        .pagebutton span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 40px;
+            height: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #444;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;     /* Prevents accidental text highlighting */
+        }
+
+        /* Hover effect for clickable numbers */
+        .pagebutton span:hover:not(.dots) {
+            border-color: #333;
+            color: #111;
+            background-color: #f9f9f9;
+        }
+
+        /* Highlight style for the active/current page */
+        .pagebutton span.active {
+            background-color: #333;
+            border-color: #333;
+            color: #fff;
+        }
+
+        /* Plain styling for the ".." spacer so it doesn't look like a clickable button */
+        .pagebutton span.dots {
+            border: none;
+            background: transparent;
+            cursor: default;
+            color: #888;
+        }
+
 
 /* product description ---------------------------------------------------------------------*/
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #ffffff;
-            padding: 60px 40px;
-        }
 
         /* Container that holds both the left and right halves */
         .product-container {
@@ -1059,6 +1004,7 @@ body {
 
     .checkout-submit-btn:hover {
         background-color: #e0432f;
+    }
 
 
     /* Responsive Mobile layout modifications */
@@ -1078,3 +1024,120 @@ body {
             width: 100%;
         }
     }
+
+/* Footer Structure ------------------------------------------------------------------------------------ */
+.site-footer {
+    background-color: #212121;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 40px 20px 20px 20px;
+}
+
+/* Flexbox Grid layout to create the 6 side-by-side columns */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    width: 14%;
+}
+
+/* Headings Styling */
+.footer-col h3 {
+    color: #878787;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+/* Inside Links Layout */
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 7px;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+/* Extra styling configurations for the address blocks */
+.address-col {
+    width: 20%;
+}
+
+.address-col p {
+    margin: 0 0 4px 0;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.border-left {
+    border-left: 1px solid #444;
+    padding-left: 25px;
+}
+
+.phone-link {
+    color: #2874f0;
+}
+
+/* Social Icon Blocks */
+.social-box {
+    margin-top: 15px;
+}
+
+.social-box span {
+    color: #878787;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+/* Bottom Bar Formatting Layout */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+    padding-top: 10px;
+}
+
+.bottom-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 25px;
+}
+
+.text-yellow {
+    color: #ffc107;
+    margin-right: 5px;
+}
+
+.copyright {
+    color: #fff;
+}
+
+/* Basic Visual Placement Boxes for Payment Badges */
+.payment-methods .card-mock {
+    background-color: #333;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 10px;
+    border: 1px solid #555;
+}
