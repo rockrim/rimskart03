@@ -25,9 +25,12 @@
         {% include 'banner_layout.html' %}
         {% endblock banner %}
 
-        {% block content %}
-        {% include 'products_list.html' %}
-        {% endblock content %}
+        {% block porducts_list %}
+        {% endblock porducts_list %}
+
+        {% block home_page %}
+        {% include 'home_page.html' %}
+        {% endblock home_page %}
 
         {% block detail %}
         {% include 'products_description.html' %}
@@ -38,6 +41,10 @@
 
         {% block cart %}
         {% endblock cart %}
+
+
+
+
 
     </main>
 

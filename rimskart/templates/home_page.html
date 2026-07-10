@@ -1,0 +1,37 @@
+{% load static %}
+
+<!-- SECTION 1: FEATURED PRODUCTS -->
+<div class="product-section">
+    <h2 class = "section-title">Featured Products</h2>
+    <div class="products-grid">
+        {% for values in featured_products %}
+            <div class="product-card">
+                <a href="{% url 'products_detail' values.id %}">
+                    <img class="product-image" src="{{ values.image.url }}" alt="{{ values.title }}">
+                </a>
+                <h3>{{ values.title }}</h3>
+                <p>₹{{ values.price }}</p>
+            </div>
+        {% empty %}
+            <p>No featured products available right now.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- SECTION 2: LATEST PRODUCTS -->
+<div class="product-section">
+    <h2 class = "section-title">Latest Products</h2>
+    <div class="products-grid">
+        {% for values in latest_products %}
+            <div class="product-card">
+                <a href="{% url 'products_detail' values.id %}">
+                    <img class="product-image" src="{{ values.image.url }}" alt="{{ values.title }}">
+                </a>
+                <h3>{{ values.title }}</h3>
+                <p>₹{{ values.price }}</p>
+            </div>
+        {% empty %}
+            <p>No new products available right now.</p>
+        {% endfor %}
+    </div>
+</div>

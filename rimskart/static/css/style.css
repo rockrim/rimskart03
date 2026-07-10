@@ -533,6 +533,15 @@ body {
             color: #888;
         }
 
+        .section-title {
+            text-align: center;      /* Centers the text horizontally */
+            font-size: 28px;         /* Makes the heading bold and readable */
+            font-weight: 600;        /* Gives it a solid, clean weight */
+            color: #212121;          /* A clean dark gray color */
+            margin-top: 30px;        /* Adds breathing room below your banners */
+            margin-bottom: 20px;     /* Adds a clean space above your product cards */
+        }
+
 
 /* product description ---------------------------------------------------------------------*/
 

@@ -1,56 +1,30 @@
-
 {% load static %}
 <div class="product-container">
         
-        <!-- LEFT SIDE: IMAGES -->
-        <div class="image-section">
-            <div class="main-image-wrapper">
-                <img src="static/images/red-tshirt-main.jpg" alt="Red Printed T-Shirt Front View">
-            </div>
-            
-            <div class="thumbnail-grid">
-                <div class="thumb-wrapper">
-                    <img src="static/images/red-tshirt-thumb1.jpg" alt="Thumbnail 1">
-                </div>
-                <div class="thumb-wrapper">
-                    <img src="static/images/red-tshirt-thumb2.jpg" alt="Thumbnail 2">
-                </div>
-                <div class="thumb-wrapper">
-                    <img src="static/images/red-tshirt-thumb3.jpg" alt="Thumbnail 3">
-                </div>
-                <div class="thumb-wrapper">
-                    <img src="static/images/red-tshirt-thumb4.jpg" alt="Thumbnail 4">
-                </div>
-            </div>
+    <!-- LEFT SIDE: IMAGES -->
+    <div class="image-section">
+        <div class="main-image-wrapper">
+            <img src="{{ prod.image.url }}" alt="{{ prod.title }}">
         </div>
+    </div> <!-- FIXED: Added missing closing div here -->
 
-        <!-- RIGHT SIDE: INFO -->
-        <div class="details-section">
-            <div class="breadcrumb">Home / T-Shirt</div>
-            
-            <h1 class="product-title">Red Printed T-Shirt by HRX</h1>
-            
-            <div class="product-price">$50.00</div>
-            
-            <select class="size-dropdown">
-                <option>Select Size</option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>XL</option>
-            </select>
-            
-            <div class="action-row">
-                <input type="number" value="1" min="1" class="quantity-input">
-                <button class="add-to-cart-btn">Add To Cart</button>
-            </div>
-            
-            <h2 class="description-title">Product Details</h2>
-            <p class="description-text">
-                Give your summer wardrobe a style upgrade with the HRX Men's Active T-Shirt. 
-                Team it with a pair of shorts for your morning workout or a denims for an 
-                evening out with the guys.
-            </p>
+    <!-- RIGHT SIDE: INFO -->
+    <div class="details-section">
+        <div class="breadcrumb">{{ prod.title }}</div>
+        
+        <h1 class="product-title">{{ prod.title }}</h1>
+        
+        <div class="product-price">{{ prod.price }}</div>
+        
+        <div class="action-row">
+            <input type="number" value="1" min="1" class="quantity-input">
+            <button class="add-to-cart-btn">Add To Cart</button>
         </div>
-
+        
+        <h2 class="description-title">Product Details</h2>
+        <p class="description-text">
+            {{ prod.description }}
+        </p>
     </div>
+
+</div>
