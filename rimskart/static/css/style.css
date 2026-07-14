@@ -863,6 +863,14 @@ body {
         }
     }
 
+    .error{
+       color:red; 
+    }
+
+    .success{
+       color:green; 
+    }
+
 /* CART -------------------------------------------------------------------------*/
     .cart-page-container {
         max-width: 1100px;

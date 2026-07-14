@@ -13,158 +13,10 @@
 {% block detail %}
 {% endblock detail %}
 
+{% block home_page %}
+{% endblock home_page %}
+
 {% block account %}
-<style>
-    /* Main Background Wrapper */
-    .account-page-wrapper {
-        background: radial-gradient(#fff, #ffd6d6);
-        padding: 80px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 80vh;
-    }
-
-    .account-container {
-        max-width: 1100px;
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        padding: 0 20px;
-        gap: 40px;
-    }
-
-    /* Left Side Graphic */
-    .account-hero-image {
-        flex: 1;
-        max-width: 600px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .account-hero-image img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
-
-    /* Right Side: The Form Card Window */
-    .form-card {
-        background: #fff;
-        width: 350px;
-        height: 440px;
-        position: relative;
-        text-align: center;
-        padding: 30px 0;
-        margin: auto;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-        overflow: hidden; /* Hides the form that is slid out of view */
-    }
-
-    /* Top Toggle Headers */
-    .form-btn-toggle {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin-bottom: 20px;
-        width: 100%;
-    }
-
-    .form-btn-toggle span {
-        font-weight: bold;
-        padding: 0 5px;
-        color: #555;
-        cursor: pointer;
-        font-size: 16px;
-        position: relative;
-    }
-
-    /* The Orange Indicator Line Under Text */
-    #indicator {
-        width: 60px;
-        border: none;
-        background: #ff523b;
-        height: 3px;
-        margin-top: 2px;
-        transform: translateX(45px); /* Starts pointing under Login */
-        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    /* Sliding Form Positioning Container */
-    .form-slider-container {
-        position: relative;
-        width: 100%;
-        height: 320px;
-    }
-
-    .account-form {
-        max-width: 300px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        padding: 0 25px;
-        position: absolute;
-        top: 0;
-        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    /* Login starts on screen, Register starts hidden off to the right */
-    #login-form {
-        left: 0;
-    }
-
-    #register-form {
-        left: 300px;
-    }
-
-    /* Inputs and Button styling */
-    .account-form input {
-        width: 100%;
-        height: 40px;
-        padding: 0 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        outline: none;
-    }
-
-    .submit-btn {
-        width: 100%;
-        border: none;
-        cursor: pointer;
-        background: #ff523b;
-        color: #fff;
-        height: 40px;
-        border-radius: 20px;
-        font-size: 15px;
-        font-weight: bold;
-        transition: background 0.2s;
-        margin-top: 5px;
-    }
-
-    .submit-btn:hover {
-        background: #e0432f;
-    }
-
-    .forgot-link {
-        font-size: 12px;
-        color: #ff523b;
-        text-decoration: none;
-        margin-top: 5px;
-    }
-
-    /* Clean mobile stacking adjustment */
-    @media (max-width: 768px) {
-        .account-container {
-            flex-direction: column;
-            gap: 50px;
-        }
-    }
-</style>
 
 <div class="account-page-wrapper">
     <div class="account-container">
@@ -193,52 +45,32 @@
                     {% csrf_token %}
                     <input type="text" placeholder="Username" name="username" required>
                     <input type="password" placeholder="Password" name="password" required>
-                    <button type="submit" class="submit-btn">Login</button>
+                    <button type="submit" class="submit-btn" name="login">Login</button>
                     <a href="#" class="forgot-link">Forgot password?</a>
                 </form>
 
                 <!-- REGISTER FORM -->
                 <form id="register-form" class="account-form" method="POST" action="">
                     {% csrf_token %}
-                    <input type="text" placeholder="Username" name="username" required>
-                    <input type="email" placeholder="Email" name="email" required>
-                    <input type="password" placeholder="Password" name="password" required>
-                    <button type="submit" class="submit-btn">Register</button>
+                    <input type="text" placeholder="Username" name="username" required maxlength="20">
+                    <input type="password" placeholder="Password" name="password" required minlength="8">
+                    <input type="text" placeholder="Address" name="address" required maxlength="30">
+                    <input type="text" placeholder="Phone" name="phone" required minlength="10">  
+                    <input type="email" placeholder="Email" name="email" required >                  
+                    <button type="submit" class="submit-btn" name="register">Register</button>
                 </form>
 
             </div>
-
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="{{message.tags}}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
 
     </div>
 </div>
 
-<!-- JAVASCRIPT ANIMATION INTERACTION -->
-<script>
-    // Grab all necessary page elements
-    const loginForm = document.getElementById("login-form");
-    const registerForm = document.getElementById("register-form");
-    const indicator = document.getElementById("indicator");
-    
-    const loginTabBtn = document.getElementById("login-tab-btn");
-    const registerTabBtn = document.getElementById("register-tab-btn");
-
-    // Click behavior for the Register button
-    registerTabBtn.onclick = function() {
-        // Slide both forms 300 pixels to the left
-        loginForm.style.transform = "translateX(-300px)";
-        registerForm.style.transform = "translateX(-300px)";
-        // Shift the orange line marker underneath the Register text label
-        indicator.style.transform = "translateX(145px)";
-    }
-
-    // Click behavior for the Login button
-    loginTabBtn.onclick = function() {
-        // Return both forms back to their original zero positions
-        loginForm.style.transform = "translateX(0px)";
-        registerForm.style.transform = "translateX(0px)";
-        // Shift the orange line marker back underneath the Login text label
-        indicator.style.transform = "translateX(45px)";
-    }
-</script>
 {% endblock account %}

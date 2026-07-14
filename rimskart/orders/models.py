@@ -1,5 +1,5 @@
 from django.db import models
-from customers.models import customer as cu
+from customers.models import Customer as cu
 from product.models import Product as pu
 
 # Model for order.
