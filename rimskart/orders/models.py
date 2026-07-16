@@ -40,9 +40,9 @@ class Order(models.Model):  # Fix 1: Capitalised class name
 
 class OrderedItem(models.Model):  # Fix 1: Capitalised class name & fixed spelling
     # Item cart product
-    product = models.ForeignKey(pu, on_delete=models.SET_NULL, null=True, related_name="ordered_items") # Fix 4 & 5
+    product = models.ForeignKey(pu, on_delete=models.SET_NULL, null=True, related_name="added_items") # Fix 4 & 5
     quantity = models.PositiveIntegerField(default=1)  # Fix 6: Changed to PositiveIntegerField
-    owner = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="ordered_items") # Fix 5
+    owner = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="added_items") # Fix 5
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name if self.product else 'Deleted Product'}"

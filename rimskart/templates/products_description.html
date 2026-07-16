@@ -1,3 +1,4 @@
+
 {% load static %}
 <div class="product-container">
         
@@ -11,16 +12,17 @@
     <!-- RIGHT SIDE: INFO -->
     <div class="details-section">
         <div class="breadcrumb">{{ prod.title }}</div>
-        
         <h1 class="product-title">{{ prod.title }}</h1>
-        
         <div class="product-price">{{ prod.price }}</div>
-        
+        <form method="post" action="{% url 'add_to_cart' %}" enctype="multipart/form-data"> 
+            {% csrf_token %}
         <div class="action-row">
-            <input type="number" value="1" min="1" class="quantity-input">
+            <input class="quantity-input" name="quantity" type="number" value="1" min="1" >
+            <input type="hidden" name="product_id" value="{{ prod.id }}">
             <button class="add-to-cart-btn">Add To Cart</button>
-        </div>
-        
+        </div>    
+        </form>
+
         <h2 class="description-title">Product Details</h2>
         <p class="description-text">
             {{ prod.description }}

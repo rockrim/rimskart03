@@ -4,7 +4,7 @@ from .models import Customer
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout as log_out
 
-# Create your views here.
+# form submition
 def show_account(request):
     if request.method == 'POST' and 'register' in request.POST:
         try:
