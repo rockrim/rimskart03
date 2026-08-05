@@ -8,14 +8,19 @@ class Customer(models.Model):
     deleted=0
     deleted_choices=((live,'live'),(deleted,'deleted'))
 
-    username = models.CharField(max_length=200)
-    address = models.TextField()
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="customer_profile")
+    address = models.TextField()
     phone=models.CharField(max_length=15)
     deleted_status=models.IntegerField(choices=deleted_choices,default=live)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+    @property
+    def username(self):
+        return self.user.username
+    
     def __str__(self):
-        return self.name
+        return self.username
+    
 

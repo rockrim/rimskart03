@@ -61,13 +61,13 @@
                 </form>
 
             </div>
-            {% if messages %}
+                {% if messages %}
                 <div class="messages">
                     {% for message in messages %}
                         <p class="{{message.tags}}">{{ message }}</p>
                     {% endfor %}
                 </div>
-            {% endif %}
+                {% endif %}
         </div>
 
     </div>

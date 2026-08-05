@@ -1,9 +1,9 @@
 from django.db import models
-from customers.models import Customer as cu
-from product.models import Product as pu
+from customers.models import Customer 
+from product.models import Product 
 
-# Model for order.
-class Order(models.Model):  # Fix 1: Capitalised class name
+
+class Order(models.Model): #owner cart single customer 
     # If item deleted going to trash
     LIVE = 1
     DELETED = 0
@@ -17,18 +17,19 @@ class Order(models.Model):  # Fix 1: Capitalised class name
     ORDER_CONFIRMED = 1
     ORDER_PROCESSED = 2
     ORDER_DELIVERED = 3
-    ORDER_REJECTED = 4  # Fix 2: Fixed spelling typo
+    ORDER_REJECTED = 4  
     
+    # giving the strings valus for the variables throgh tuple 
     STATUS_CHOICE = (
-        (CART_STAGE, "cart_stage"),         # Fix 3: Added missing choices
-        (ORDER_CONFIRMED, "order_confirmed"), # Fix 3: Added missing choices
+        (CART_STAGE, "cart_stage"),        
+        (ORDER_CONFIRMED, "order_confirmed"), 
         (ORDER_PROCESSED, "order_processed"),
         (ORDER_DELIVERED, "order_delivered"),
         (ORDER_REJECTED, "order_rejected"),
     )
      
-    # Fix 4: Allowed null values on ForeignKey since on_delete is SET_NULL
-    owner = models.ForeignKey(cu, on_delete=models.SET_NULL, null=True, related_name="orders")
+    # creating the fields for spreate cart for every customer
+    owner = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, related_name="orders")# one customer can have multiple orders
     deleted_status = models.IntegerField(choices=DELETED_CHOICES, default=LIVE)
     order_status = models.IntegerField(choices=STATUS_CHOICE, default=CART_STAGE)
     created_at = models.DateTimeField(auto_now_add=True)    
@@ -38,11 +39,17 @@ class Order(models.Model):  # Fix 1: Capitalised class name
         return f"Order {self.id} - Owner: {self.owner}"
 
 
-class OrderedItem(models.Model):  # Fix 1: Capitalised class name & fixed spelling
-    # Item cart product
-    product = models.ForeignKey(pu, on_delete=models.SET_NULL, null=True, related_name="added_items") # Fix 4 & 5
-    quantity = models.PositiveIntegerField(default=1)  # Fix 6: Changed to PositiveIntegerField
-    owner = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="added_items") # Fix 5
-
+class OrderedItem(models.Model):  
+    # Items of custormer order cart
+    owner = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="added_items")# one customer can have multiple items in cart
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name="added_items")#can not create duplicate product in cart for same customer
+    quantity = models.PositiveIntegerField(default=1)  
+     
     def __str__(self):
-        return f"{self.quantity} x {self.product.name if self.product else 'Deleted Product'}"
+        if self.product:
+            # 1. Checks if 'title' exists, then checks 'product_name', then falls back to Product ID
+            product_label = getattr(self.product, 'title', 
+                            getattr(self.product, 'product_name', 
+                            f"Product #{self.product.id}"))
+            return f"{self.quantity} x {product_label}"
+        return f"{self.quantity} x Deleted Product"

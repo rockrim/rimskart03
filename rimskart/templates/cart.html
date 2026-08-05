@@ -1,5 +1,7 @@
 {% extends 'blank_layout.html' %}
 {% load static %}
+{% load multiply %}
+{% load gettotal %}
 
 {% block header %}
 {% include 'header.html' %}
@@ -24,12 +26,13 @@
 {% block home_page %}
 {% endblock home_page %}
 
+
 {% block cart %}
 <div class="cart-page-container">
     
     <!-- Main Items Grid Table -->
     <table class="cart-table">
-        {% if added_iteams %}
+        {% if added_items %}
         <thead>
             <tr>
                 <th width="65%">Product</th>
@@ -38,22 +41,22 @@
             </tr>
         </thead>
         <tbody>       
-            {% for cart_iteam in added_iteams %}
+            {% for cart_item in added_items %}
             <tr>
                 <td>
                     <div class="cart-product-info">
-                        <img src="{{ cart_iteam.product.image.url }}" alt="{{ cart_iteam.product.title}}">
+                        <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.title}}">
                         <div class="product-details-box">
-                            <h3>{{ cart_iteam.product.title}}</h3>
-                            <span class="item-price">${{ cart_iteam.product.price|floatformat:2 }}</span>
-                            <a class="remove-btn">Remove</a>
+                            <h3>{{ cart_item.product.title}}</h3>
+                            <span class="item-price">₹{{ cart_item.product.price|floatformat:2 }}</span>
+                            <a href="{% url 'remove_from_cart' cart_item.id %}" class="remove-btn">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td class="quantity-cell">
-                    <input type="number" disabled  value="{{ cart_iteam.quantity }}" min="1" class="cart-qty-input">
+                    <input type="number" disabled  value="{{ cart_item.quantity }}" min="1" class="cart-qty-input">
                 </td>
-                <td class="subtotal-cell">${{ cart_iteam.product.price|floatformat:2 }}</td>
+                <td class="subtotal-cell">₹{% multiply cart_item.product.price cart_item.quantity %}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -64,23 +67,37 @@
         <table class="summary-table">
             <tr>
                 <td>Subtotal</td>
-                <td class="text-right-align">$200.00</td>
+                <td class="text-right-align">₹{{cart_subtotal}}</td>
             </tr>
             <tr>
-                <td>Tax</td>
-                <td class="text-right-align">$35.00</td>
+                <td>charge</td>
+                <td class="text-right-align">₹18.00</td>
             </tr>
             <tr class="total-row">
                 <td>Total</td>
-                <td class="text-right-align">$230.00</td>
+                <td class="text-right-align">₹{{grand_total}}</td>
             </tr>
             <tr>
                 <td></td>
-                <td><button type="submit" class="checkout-submit-btn">Proceed To Checkout</button></td>
+                <td>
+                    <!-- FIX: Put the entire form cleanly inside the table cell -->
+                    <form method="POST" action="{% url 'checkout' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="total" value="{{ grand_total }}"/>
+                        <button type="submit" class="checkout-submit-btn">Proceed To Checkout</button>
+                    </form>
+                </td>
             </tr>
         </table>
     </div>  
 </div>
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <p class="{{message.tags}}">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
 {% else %}
     <p>Your cart is empty.</p>
 {% endif %}    
