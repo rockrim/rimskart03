@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect   
 from .models import Order, OrderedItem
 from product.models import Product
@@ -70,24 +71,25 @@ def remove_from_cart(request, pk):
 @login_required  
 def checkout_cart(request):
     if request.method == 'POST':
-
         try:
             user = request.user 
-            customer =user.customer_profile        
-            total = float(request.POST.get('total'))
+            customer = user.customer_profile        
+            total = float(request.POST.get('total', 0.00)) # Get total from template
+            
             order_obj = Order.objects.get(
                 owner=customer,
                 order_status=Order.CART_STAGE
             )
 
             if order_obj:
-                order_obj.order_status=Order.ORDER_CONFIRMED
+                order_obj.total_amount = total           # <--- FIX: Save amount to DB
+                order_obj.order_status = Order.ORDER_CONFIRMED
                 order_obj.save()
-                status_message= "your order has been placed successfully"
+                
+                status_message = "Your order has been placed successfully!"
                 messages.success(request, status_message)
-
             else:
-                status_message = "no iteam in cart" 
+                status_message = "No items in cart." 
                 messages.error(request, status_message)
 
         except Exception as e:
@@ -95,7 +97,24 @@ def checkout_cart(request):
             messages.error(request, status_message)
             print(f"Error during checkout: {e}")
 
-    return redirect ("show_cart")                
+    return redirect("show_cart")
+
+
+@login_required 
+def show_orders(request):
+    user = request.user 
+    
+    try:
+        customer = user.customer_profile 
+    except AttributeError:
+
+        return render(request, 'orders.html', {'orders': [], 'error': 'No profile found.'})
+
+    all_orders = Order.objects.filter(owner=customer) 
+    context = { 'orders': all_orders }
+
+    return render(request, 'orders.html', context)
+           
 
 
 

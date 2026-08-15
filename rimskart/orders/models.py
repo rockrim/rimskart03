@@ -34,6 +34,16 @@ class Order(models.Model): #owner cart single customer
     order_status = models.IntegerField(choices=STATUS_CHOICE, default=CART_STAGE)
     created_at = models.DateTimeField(auto_now_add=True)    
     updated_at = models.DateTimeField(auto_now=True)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    def save(self, *args, **kwargs):
+    # Only calculate if the order already exists in the database
+        if self.pk:
+            # Assumes your Product model has a field named 'price'
+            total = sum(item.quantity * item.product.price for item in self.added_items.all() if item.product)
+            self.total_amount = total
+        super().save(*args, **kwargs)
+
+
 
     def __str__(self):
         return f"Order {self.id} - Owner: {self.owner}"
@@ -47,7 +57,6 @@ class OrderedItem(models.Model):
      
     def __str__(self):
         if self.product:
-            # 1. Checks if 'title' exists, then checks 'product_name', then falls back to Product ID
             product_label = getattr(self.product, 'title', 
                             getattr(self.product, 'product_name', 
                             f"Product #{self.product.id}"))

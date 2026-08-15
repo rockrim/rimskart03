@@ -33,7 +33,7 @@
                     <li><a href="{% url 'account' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
                     {% else %}
                     <li><a href="#"><i class="fa-solid fa-circle-user"></i> Account</a></li>
-                    <li><a href="#"><i class="fa-solid fa-box"></i> Orders</a></li>
+                    <li><a href="{% url 'show_orders' %}"><i class="fa-solid fa-box"></i> Orders</a></li>
                     <li><a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a></li>
                     <li><a href="{% url 'signout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                     {% endif %}
